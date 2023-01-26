@@ -1,28 +1,62 @@
-# docker-gs-ping
+# Practice Docker 
 
-A simple Go server/microservice example for [Docker's Go Language Guide](https://docs.docker.com/language/golang/).
+First, We have a sample golang application
+```go
+package main
 
-Notable features:
+import (
+	"net/http"
+	"os"
 
-* Includes a [multi-stage `Dockerfile`](https://github.com/olliefr/docker-gs-ping/blob/main/Dockerfile.multistage), which actually is a good example of how to build Go binaries _for production releases_.
-* Has functional tests for application's business requirements with proper isolation between tests using [`ory/dockertest`](https://github.com/ory/dockertest).
-* Has a CI pipeline using GitHub Actions to run functional tests in independent containers.
-* Has a CD pipeline using GitHub Actions to publish to Docker Hub.
+	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
+)
 
-Planned:
+func main() {
 
-* Building Go modules and Docker images with `goreleaser`
+	e := echo.New()
 
-## Want _moar_?!
+	e.Use(middleware.Logger())
+	e.Use(middleware.Recover())
 
-There is a more advanced example in [olliefr/docker-gs-ping-roach](https://github.com/olliefr/docker-gs-ping-roach) using [CockroachDB](https://github.com/cockroachdb/cockroach).
+	e.GET("/", func(c echo.Context) error {
+		return c.HTML(http.StatusOK, "Hello, Docker! <3")
+	})
 
-## Contributing
+	e.GET("/ping", func(c echo.Context) error {
+		return c.JSON(http.StatusOK, struct{ Status string }{Status: "OK"})
+	})
 
-This was written for an _introduction_ section of the Docker tutorial and as such it favours brevity and pedagogical clarity over robustness. 
+	httpPort := os.Getenv("HTTP_PORT")
+	if httpPort == "" {
+		httpPort = "8080"
+	}
 
-Thus, feedback is welcome, but please no nits or pedantry. Ain't nobody got time for that 🙃
+	e.Logger.Fatal(e.Start(":" + httpPort))
+}
 
-## License
+```
 
-[Apache-2.0 License](LICENSE)
+然後 新增Dockerfile
+```txt
+FROM golang:latest
+
+WORKDIR /app
+
+COPY go.mod .
+COPY go.sum .
+RUN go mod download
+
+COPY *.go ./
+
+RUN go build -o /docker-test
+
+EXPOSE 8080
+
+CMD [ "/docker-test" ]
+```
+
+Build Image
+```cmd
+docker build --tag docker_test .
+```
