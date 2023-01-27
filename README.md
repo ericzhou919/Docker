@@ -1,4 +1,4 @@
-# Practice Kubernetes and Docker 
+# Practice Docker 
 
 First, We have a sample golang application
 ```go
@@ -60,3 +60,9 @@ Build Image
 ```cmd
 docker build --tag docker_test .
 ```
+
+Check Image
+```cmd
+docker image ls
+```
+![image](img/ls.png)
