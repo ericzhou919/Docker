@@ -77,6 +77,9 @@ curl http://localhost:8080/
 ![image](img/docker_run.png) 
 
 ## Push to Docker Hub  
+註冊一個帳號    
+https://hub.docker.com  
+
 
 名字前面必須加上DockerHub的帳號才能成功Push
 ```cmd
