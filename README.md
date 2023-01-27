@@ -61,4 +61,8 @@ Build Image
 docker build --tag docker_test .
 ```
 
-![image](img/build_Image.png)
+Check Image
+```cmd
+docker image ls
+```
+![image](img/ls.png)
