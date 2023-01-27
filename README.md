@@ -70,8 +70,17 @@ docker image ls
 Run Image
 ```cmd
 docker run --publish 8080:8080 docker_test  
+curl http://localhost:8080/ping   
 curl http://localhost:8080/
 ```
 
 ![image](img/docker_run.png) 
 
+## Push to Docker Hub  
+
+名字前面必須加上Docker Hub的帳號才能成功Push
+```cmd
+docker tag docker_test zhouchenyu000/docker_test
+docker push zhouchenyu000/docker_test:latest
+```
+![image](img/hub.png) 
