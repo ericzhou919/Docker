@@ -78,7 +78,7 @@ curl http://localhost:8080/
 
 ## Push to Docker Hub  
 
-名字前面必須加上Docker Hub的帳號才能成功Push
+名字前面必須加上DockerHub的帳號才能成功Push
 ```cmd
 docker tag docker_test zhouchenyu000/docker_test
 docker push zhouchenyu000/docker_test:latest
