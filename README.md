@@ -1,4 +1,4 @@
-# Practice Docker 
+# Practice Kubernetes and Docker 
 
 First, We have a sample golang application
 ```go
