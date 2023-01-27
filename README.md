@@ -39,12 +39,17 @@ func main() {
 
 然後 新增Dockerfile
 ```txt
+#Define the base image file used when creating a Docker container.
 FROM golang:latest
 
+#Set the working directory to /app
 WORKDIR /app
 
+#Copy the go.mod and go.sum files into our project directory /app
 COPY go.mod .
 COPY go.sum .
+
+
 RUN go mod download
 
 COPY *.go ./
