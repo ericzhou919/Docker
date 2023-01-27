@@ -67,18 +67,11 @@ docker image ls
 ```
 ![image](img/ls.png)  
 
-Check Image
-```cmd
-docker image ls
-```
-
 Run Image
 ```cmd
 docker run --publish 8080:8080 docker_test  
 curl http://localhost:8080/
 ```
 
-Cmd：
-```cmd
-Hello, Docker!%
-```
+![image](img/docker_run.png) 
+
