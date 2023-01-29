@@ -37,7 +37,7 @@ func main() {
 
 ```
 
-然後 新增Dockerfile
+Then add the Dockerfile
 ```txt
 #Define the base image file used when creating a Docker container.
 FROM golang:latest
@@ -82,7 +82,7 @@ curl http://localhost:8080/
 ![image](img/docker_run.png) 
 
 ## Push to Docker Hub  
-註冊一個帳號    
+To register for an account      
 https://hub.docker.com  
 
 
