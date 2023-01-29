@@ -86,7 +86,7 @@ To register for an account
 https://hub.docker.com  
 
 
-名字前面必須加上DockerHub的帳號才能成功Push
+To successfully push a container image to Docker Hub, the image name must include your Docker Hub account name as a prefix
 ```cmd
 docker tag docker_test zhouchenyu000/docker_test
 docker push zhouchenyu000/docker_test:latest
